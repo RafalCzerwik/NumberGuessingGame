@@ -4,13 +4,11 @@ import random
 def get_user_guess():
     """Get number from user and return it."""
     while True:
-        try:
-            user_guess = input('Guess the number: ')
-            if user_guess.isdigit():
-                return int(user_guess)
-        except ValueError:
+        user_guess = input('Guess the number: ')
+        if user_guess.isdigit():
+            return int(user_guess)
+        else:
             print("It's not a number!")
-
 
 def main():
     """Main game function."""
