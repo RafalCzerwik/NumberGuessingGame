@@ -1,28 +1,30 @@
 import random
 
 
-def get_user_guess():
-    """Get number from user and return it."""
+def get_guess_number():
+    """Get guess number from input. Check if is int. Can't be a letter/word"""
     while True:
-        user_guess = input('Guess the number: ')
-        if user_guess.isdigit():
-            return int(user_guess)
-        else:
+        try:
+            guess_number = int(input("Guess the number: "))
+            break
+        except ValueError:
             print("It's not a number!")
+    return guess_number
+
 
 def main():
-    """Main game function."""
-    guess_number = random.randint(1, 100)
-    while True:
-        guess = get_user_guess()
-        if guess < guess_number:
+    """Main function with our game"""
+    print("Welcome in game GUESS THE NUMBER!\n")
+    secret_number = random.randint(1, 100)
+    user_number = get_guess_number()
+    while user_number != secret_number:
+        if user_number < secret_number:
             print("Too small!")
-        elif guess > guess_number:
-            print("Too big!")
         else:
-            print("You win!!!")
-            break
+            print("Too big!")
+        user_number = get_guess_number()
+    print("You win!")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
